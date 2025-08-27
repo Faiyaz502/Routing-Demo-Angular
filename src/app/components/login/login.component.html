@@ -1,0 +1,136 @@
+<div class="login-container">
+  <div class="floating-elements"></div>
+  
+  <div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="col-md-6 ">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-5">
+          <!-- Header -->
+          <div class="text-center mb-4">
+            <h2 class="welcome-title">Welcome Back</h2>
+            <p class="welcome-subtitle">Sign in to your account</p>
+          </div>
+
+          <!-- Social Login Buttons -->
+          <div class="social-login-section mb-4">
+            <button type="button" class="btn btn-social btn-google w-100 mb-2" 
+                    (click)="loginWithGoogle()">
+              <i class="fab fa-google me-2"></i>
+              Continue with Google
+            </button>
+            <button type="button" class="btn btn-social btn-facebook w-100" 
+                    (click)="loginWithFacebook()">
+              <i class="fab fa-facebook-f me-2"></i>
+              Continue with Facebook
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider-section mb-4">
+            <hr class="divider-line">
+            <span class="divider-text">or</span>
+            <hr class="divider-line">
+          </div>
+
+          <!-- Login Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            
+            <!-- Email -->
+            <div class="form-group-wrapper">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <div class="position-relative">
+                  <input 
+                    type="email" 
+                    id="email" 
+                    formControlName="email" 
+                    class="form-control"
+                    [class.is-invalid]="email?.invalid && email?.touched"
+                    [class.is-valid]="email?.valid && email?.touched"
+                    placeholder="Enter your email">
+                  <i class="fas fa-envelope input-icon"></i>
+                </div>
+                <div class="invalid-feedback" 
+                     *ngIf="email?.touched && email?.invalid">
+                  <span *ngIf="email?.errors?.['required']">Email is required</span>
+                  <span *ngIf="email?.errors?.['email']">Enter a valid email</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group-wrapper">
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="position-relative">
+                  <input 
+                    [type]="showPassword ? 'text' : 'password'" 
+                    id="password" 
+                    formControlName="password" 
+                    class="form-control"
+                    [class.is-invalid]="password?.invalid && password?.touched"
+                    [class.is-valid]="password?.valid && password?.touched"
+                    placeholder="Enter your password">
+                  <button 
+                    type="button" 
+                    class="btn btn-password-toggle" 
+                    (click)="togglePasswordVisibility()">
+                    <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                  </button>
+                </div>
+                <div class="invalid-feedback" 
+                     *ngIf="password?.touched && password?.invalid">
+                  <span *ngIf="password?.errors?.['required']">Password is required</span>
+                  <span *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input" 
+                  id="rememberMe" 
+                  formControlName="rememberMe">
+                <label class="form-check-label" for="rememberMe">
+                  Remember me
+                </label>
+              </div>
+              <a href="javascript:void(0)" 
+                 class="forgot-password-link" 
+                 (click)="forgotPassword()">
+                Forgot password?
+              </a>
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              class="btn btn-primary w-100"
+              [disabled]="isLoading">
+              <span *ngIf="!isLoading">
+                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+              </span>
+              <span *ngIf="isLoading">
+                <i class="fas fa-spinner fa-spin me-2"></i>Signing In...
+              </span>
+            </button>
+
+            <!-- Sign Up Link -->
+            <div class="text-center mt-4">
+              <span class="signup-text">Don't have an account? </span>
+              <a routerLink="/signup" 
+                 class="signup-link" 
+                 (click)="goToSignup()">
+                Create account
+              </a>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

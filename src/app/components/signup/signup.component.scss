@@ -1,0 +1,24 @@
+.card {
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+input.form-control {
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+button.btn {
+  border-radius: 12px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+button.btn:hover {
+  background-color: #0a58ca;
+}
