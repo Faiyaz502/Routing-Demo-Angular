@@ -9,9 +9,11 @@ import { ErrorComponentComponent } from './ErrorPage/error-component/error-compo
 import { ReviewComponent } from './components/review/review.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserAddEditComponent } from './components/user-add-edit/user-add-edit.component';
 
 const routes: Routes = [
-  {path:"", redirectTo:'/login', pathMatch:'full'},
+  {path:"", redirectTo:'/home', pathMatch:'full'},
   {path:"home",component:HomeComponent},
   {path:"about",component:AboutComponent},
   {path:"contact",component:ContactComponent},
@@ -19,6 +21,9 @@ const routes: Routes = [
    {path:'single/:id',component:ShopSingleComponent},
   {path : 'login', component:LoginComponent},
   {path : 'signup', component:SignupComponent},
+  { path: 'users', component: UserListComponent },
+  { path: 'users/add', component: UserAddEditComponent },
+  { path: 'users/edit/:id', component: UserAddEditComponent },
  
   {path:"**",component:ErrorComponentComponent},
 ];

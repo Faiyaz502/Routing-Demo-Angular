@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UserAddEditComponent } from './components/user-add-edit/user-add-edit.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     FooterComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserAddEditComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
